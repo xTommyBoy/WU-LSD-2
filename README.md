@@ -27,21 +27,21 @@ Avant toutes choses au niveau de la reconnaissance on essaye de lancer les class
 En essayant tout ces outils, on s'aperçoit une chose qui reviens le plus souvent : un bout de phrase bizarre expliquant la définition de ce qu'est la stéganographie. Via le green pattern
 J'ai donc décidé de lancer StegSolve pour voir ce qu'il en était de ce fameux pattern on next le pattern on next le pattern et OH! une fois arrivé au green pattern, au bit 0 on aperçoit ceci : 
 
-![image_2023-05-17_180819853](https://github.com/xTommyBoy/wu/assets/66128183/39f60dea-953d-4132-a179-3f93e00449f5)
+![image_2023-05-17_181303763](https://github.com/xTommyBoy/WU-LSD-2/assets/66128183/a7e8f2c0-1245-4b12-a764-497659a6ea06)
 
 C'est donc bien du LSB !
 
 Je décide donc d'extraire ce fameux LSB via StegSolve : 
 
-![image_2023-05-17_180907006](https://github.com/xTommyBoy/wu/assets/66128183/a3c9eae9-f78c-43bf-b9e1-62c9b98ae05c)
+![image_2023-05-17_181315577](https://github.com/xTommyBoy/WU-LSD-2/assets/66128183/ddc14dc0-e317-4f96-9fc0-8a27b5341477)
 
 Mais...Bizarrement on obtient que des bouts de phrases de cette fameuse définition, de ce qu'est la stéganographie. Je décide donc de sauvegarder l'extraction et de regarder les strings via DiE, et en tentant d'écrire "Her" dans le filtre voilà ce qu'on obtient :
 
-![image_2023-05-17_180931266](https://github.com/xTommyBoy/wu/assets/66128183/d98515ff-913b-451d-8ba2-225e616c6740)
+![image_2023-05-17_181332701](https://github.com/xTommyBoy/WU-LSD-2/assets/66128183/ab8d0e6b-fbd3-450b-ae0d-6dfdb9066de9)
 
 à la toute fin du fichier, on obtient la phrase "Here is your flag" coupé et sans suite....
 
-![image_2023-05-17_180946882](https://github.com/xTommyBoy/wu/assets/66128183/e19a72f9-0594-4ef2-9007-981753a78c3e)
+![image_2023-05-17_181348612](https://github.com/xTommyBoy/WU-LSD-2/assets/66128183/b343403d-4847-48fe-9e43-f8475ba7f811)
 
 > **_NOTE:_** En essayant d'extraire le LSB par CyberChef ou autre site capable de faire ça, et bien il ne reconnaissait même pas le LSB en question...
 
@@ -51,7 +51,7 @@ En premier lieu, j'ai tenté une floppée de techniques et d'outils le plus prof
 
 J'ai donc décidé de voir pourquoi est ce qu'on ne pouvait identifier le lsb que par la couleur verte. J'ai donc utilisé un Pixel Color Identifier pour voir le pourquoi du comment :
 
-![image_2023-05-17_180958907](https://github.com/xTommyBoy/wu/assets/66128183/7613a47a-ede9-4832-bbd7-24f1d4c51c1a)
+![image_2023-05-17_181359063](https://github.com/xTommyBoy/WU-LSD-2/assets/66128183/e08ec28f-c453-46dd-9490-1aae23e2bc29)
 
 Et voilà tout est la ! La technique se repose en fait sur deux choses : les pixels cachés sont en jaune car les pixels sont reconnaissables que en vert et qu'aucun layer ou pattern bleu ne fonctionne (donc 0 RGB value). 
 Le rouge lui est fortement identifiable. Si on enregistre l'image avec le LSB visible dans la partie en haut à gauche (la ou est le LSB en question) il reste constamment en 255 d'ou sa forte présence, le vert lui est présent mais ces valeurs sont très changeantes : 254,255,254,255 etc... ce qui nous indique donc que le LSB ce base sur une différence de valeur entre le rouge et le vert pour former le LSB.
@@ -93,7 +93,7 @@ def decode(src):
 On récupère donc notre image avec le lsb visible (green pattern 0 bits), on screenshot la partie lsb en haut à gauche en 200 par 200 (comme expliqué dans la description pour être sur de tout récuperer),
 Et ensuite on extrait le tout : 
 
-![image_2023-05-17_181014507](https://github.com/xTommyBoy/wu/assets/66128183/18086e7b-3409-497f-842c-b05e1363322a)
+![image_2023-05-17_181410561](https://github.com/xTommyBoy/WU-LSD-2/assets/66128183/7738155f-4bdf-4373-8171-65c24aedacb9)
 
 Ce qui nous affiche le reste du texte !
 (Dans cet exemple j'ai utilisé CyberChef, mais tout autre tool d'extraction fonctionnerait aussi.)
