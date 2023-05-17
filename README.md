@@ -27,7 +27,7 @@ Avant toutes choses au niveau de la reconnaissance on essaye de lancer les class
 En essayant tout ces outils, on s'aperçoit une chose qui reviens le plus souvent : un bout de phrase bizarre expliquant la définition de ce qu'est la stéganographie. Via le green pattern
 J'ai donc décidé de lancer StegSolve pour voir ce qu'il en était de ce fameux pattern on next le pattern on next le pattern et OH! une fois arrivé au green pattern, au bit 0 on aperçoit ceci : 
 
-![image_2023-05-17_180356104](https://github.com/xTommyBoy/wu/assets/66128183/c6e7fedb-f162-4a60-8df6-359ad4e5914d)
+![image_2023-05-17_180819853](https://github.com/xTommyBoy/wu/assets/66128183/39f60dea-953d-4132-a179-3f93e00449f5)
 
 C'est donc bien du LSB !
 
